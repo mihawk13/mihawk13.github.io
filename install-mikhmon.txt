@@ -1,40 +1,39 @@
 #bin/bash
 pkg install git php -y
-rm -rf mikhmon
-git clone https://github.com/mihawk13/mikhmon.git
-cat >start-mikhmon <<EOL
+git clone https://github.com/mihawk13/mikhmonv3.git
+cat >start-mikhmonv3 <<EOL
 #bin/bash
 if pgrep "php" >/dev/null 2>&1 ; then
 killall php
 fi
-cd mikhmon
+cd mikhmonv3
 php -S 0.0.0.0:8080
 EOL
-cat >update-mikhmon <<EOL
+cat >update-mikhmonv3 <<EOL
 #bin/bash
-rm -rf ~/backup-mikhmon
-mkdir ~/backup-mikhmon
-cp ~/mikhmon/include/config.php ~/backup-mikhmon/config.php
-cp -rf ~/mikhmon/voucher/. ~/backup-mikhmon/voucher/
-cp -rf ~/mikhmon/img/. ~/backup-mikhmon/img/
-rm -rf mikhmon
-rm ~/backup-mikhmon/voucher/print.php
-rm ~/backup-mikhmon/voucher/printbt.php
-git clone https://github.com/mihawk13/mikhmon.git
-cp ~/backup-mikhmon/config.php ~/mikhmon/include/config.php
-cp -rf ~/backup-mikhmon/voucher/. ~/mikhmon/voucher/
-cp -rf ~/backup-mikhmon/img/. ~/mikhmon/img/
-rm -rf ~/backup-mikhmon
-./start-mikhmon
+rm -rf ~/backup-mikhmonv3
+mkdir ~/backup-mikhmonv3
+cp ~/mikhmonv3/include/config.php ~/backup-mikhmonv3/config.php
+cp -rf ~/mikhmonv3/voucher/. ~/backup-mikhmonv3/voucher/
+cp -rf ~/mikhmonv3/img/. ~/backup-mikhmonv3/img/
+rm -rf mikhmonv3
+rm ~/backup-mikhmonv3/voucher/print.php
+rm ~/backup-mikhmonv3/voucher/printbt.php
+git clone https://github.com/mihawk13/mikhmonv3.git
+cp ~/backup-mikhmonv3/config.php ~/mikhmonv3/include/config.php
+cp -rf ~/backup-mikhmonv3/voucher/. ~/mikhmonv3/voucher/
+cp -rf ~/backup-mikhmonv3/img/. ~/mikhmonv3/img/
+rm -rf ~/backup-mikhmonv3
+./start-mikhmonv3
 EOL
-cat >remove-mikhmon <<EOL
+cat >remove-mikhmonv3 <<EOL
 #bin/bash
-rm -rf mikhmon
+rm -rf mikhmonv3
 EOL
 cat >.bashrc <<EOL
-~/start-mikhmon
+~/start-mikhmonv3
 EOL
-chmod +x start-mikhmon
-chmod +x update-mikhmon
-chmod +x remove-mikhmon
-./start-mikhmon
+chmod +x start-mikhmonv3
+chmod +x update-mikhmonv3
+chmod +x remove-mikhmonv3
+./start-mikhmonv3
