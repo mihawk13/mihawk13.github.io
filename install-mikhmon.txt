@@ -1,7 +1,7 @@
 #bin/bash
 pkg install git php -y
 git clone https://github.com/mihawk13/mikhmonv3.git
-cat >start-mikhmonv3 <<EOL
+cat >start-mikhmon <<EOL
 #bin/bash
 if pgrep "php" >/dev/null 2>&1 ; then
 killall php
@@ -9,10 +9,9 @@ fi
 cd mikhmonv3
 php -S 0.0.0.0:8080
 EOL
-cat >update-mikhmonv3 <<EOL
+cat >update-mikhmon <<EOL
 #bin/bash
-rm -rf ~/backup-mikhmonv3
-mkdir ~/backup-mikhmonv3
+mkdir ~/backup-mikhmon
 cp ~/mikhmonv3/include/config.php ~/backup-mikhmon/config.php
 cp -rf ~/mikhmonv3/voucher/. ~/backup-mikhmon/voucher/
 cp -rf ~/mikhmonv3/img/. ~/backup-mikhmon/img/
