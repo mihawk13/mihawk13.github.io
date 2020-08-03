@@ -1,5 +1,6 @@
 #bin/bash
 pkg install git php -y
+rm -rf mikhmon
 git clone https://github.com/mihawk13/mikhmon.git
 cat >start-mikhmon <<EOL
 #bin/bash
@@ -11,6 +12,7 @@ php -S 0.0.0.0:8080
 EOL
 cat >update-mikhmon <<EOL
 #bin/bash
+rm -rf ~/backup-mikhmon
 mkdir ~/backup-mikhmon
 cp ~/mikhmon/include/config.php ~/backup-mikhmon/config.php
 cp -rf ~/mikhmon/voucher/. ~/backup-mikhmon/voucher/
@@ -29,8 +31,8 @@ cat >remove-mikhmon <<EOL
 #bin/bash
 rm -rf mikhmonv3
 EOL
-cat >.bashrc <<EOL	
-~/start-mikhmon	
+cat >.bashrc <<EOL
+~/start-mikhmon
 EOL
 chmod +x start-mikhmon
 chmod +x update-mikhmon
